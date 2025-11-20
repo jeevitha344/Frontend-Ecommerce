@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 import Register from './Register'
 import Login from './Login'
 import Modal from './Modal'
-import SearchBar from './searchBar'
+import SearchBar from './SearchBar'
 import Collection from '../pages/Collection'
 
 
