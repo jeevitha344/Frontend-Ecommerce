@@ -16,7 +16,7 @@ import Footer from './component/Footer'
 import Features from './component/Features'
 import Checkout from './pages/Checkout'
 import Register from './component/Register'
-import SearchBar from './component/searchBar'
+import SearchBar from './component/SearchBar'
 import FilterData from './pages/FilterData'
 import  ProductDetails from './pages/ProductDetails'
 function App() {
