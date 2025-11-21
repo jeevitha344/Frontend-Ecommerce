@@ -45,7 +45,7 @@ text:'24/7 Support'
  
 <div className='container  grid grid-cols-2  md:grid-cols-2 lg:grid-cols-6  gap-8   '>
 {feature.map((element,index)=>
-<div key={index} className='  flex flex-col items-center justify-between text-center mx-auto px-4 py-3  sm:px-2 sm:py-[9px] border-box shadow  transform transition-transform duration-300 hover:scale-105 border'>
+<div key={index} className='  flex flex-col items-center justify-between text-center mx-auto px-4 py-3  sm:px-2 sm:py-[9px] border-box shadow  transform transition-transform duration-300 hover:scale-105'>
  <img src= {element.images} alt='' className='my-2'/>
   <h4 className='bg-gray-300  mx-auto sm: px-2 py-0  border rounded text-[#088178] mt-5 mb-2 font-serif'>{element.text}</h4>
 </div>
