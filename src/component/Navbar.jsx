@@ -46,11 +46,11 @@ navigate('/collection')
     <>
   <nav className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
       
-<div className='container mx-auto px-4 md:px-16 lg:px-24 py-6 flex justify-between items-center'>
+<div className='container mx-auto px-2 md:px-16 lg:px-24 py-6 flex justify-between items-center'>
 
  {/* logo image */}
 
- <div className='w-32 relative left-10 sm:left-0  sm:w-36 '>
+ <div className='w-32 relative left-5  sm:left-0 sm:w-36 '>
       <Link to='/'>
   <img src={image.logo} />    
 </Link></div>
@@ -87,7 +87,7 @@ navigate('/collection')
 
 </ul>
 
-<div className='flex items-center gap-6 ml-6  sm: mr-9.5 ' >
+<div className='flex items-center gap-6 ml-8  sm: mr-9.5  sm:ml-6' >
    <img src={image.search_icon} className='w-5 cursor-pointer' alt=""  onClick={handeler}/> 
 
 {/* <div className='flex gap-4'>  */}
@@ -104,17 +104,17 @@ navigate('/collection')
 
  {/* mobile view nav link using burger menu*/}
 
-<img onClick={()=>setVisible(true)} src={image.menu_icon}  className='w-5 cursor-pointer sm:hidden' alt="" />
 
-<button className='hidden md:block cursor-pointer'  onClick={()=>setIsOpenModel(true)}>
+
+<button className='text-xm  md:block cursor-pointer'  onClick={()=>setIsOpenModel(true)}>
   Login
 </button>
 
-<button className='hidden md:block cursor-pointer 'onClick={()=>setIsOpenModel(true)} >
+<button className=' text-xm  md:block cursor-pointer 'onClick={()=>setIsOpenModel(true)} >
   Register
 </button></div>
 
-
+<img onClick={()=>setVisible(true)} src={image.menu_icon}  className='w-5  mr-2 cursor-pointer sm:hidden' alt="" />
  {/* mobile view nav link*/}
 
 <div className={`absolute top-0 right-0 bottom-0  bg-white transition-all ${visible ? 'w-full':'w-0'}`}>

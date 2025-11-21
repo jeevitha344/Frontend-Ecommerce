@@ -64,12 +64,9 @@ export const data=[
          description:'Trendy red and blue color-block shirt with a contrasting pocket. A playful design for a modern, youthful look.'
 
     },
-]
 
-
-export const data1=[
-    {
-        id:1,
+{
+        id:7,
         image:image.n1,
         text:"Adidas",
         name:"cartoon astronaut shirt",
@@ -77,7 +74,7 @@ export const data1=[
 
     },
      {
-        id:2,
+        id:8,
         image:image.n2,
         text:"Adidas",
         name:"cartoon astronaut shirt",
@@ -85,7 +82,7 @@ export const data1=[
 
     },
      {
-        id:3,
+        id:9,
         image:image.n3,
         text:"Adidas",
         name:"cartoon astronaut shirt",
@@ -93,7 +90,7 @@ export const data1=[
 
     },
      {
-        id:4,
+        id:10,
         image:image.n4,
         text:"Adidas",
         name:"cartoon astronaut shirt",
@@ -101,7 +98,7 @@ export const data1=[
 
     },
      {
-        id:5,
+        id:11,
         image:image.f51,
         text:"Adidas",
         name:"cartoon astronaut shirt",
@@ -109,11 +106,64 @@ export const data1=[
 
     },
      {
-        id:6,
+        id:12,
         image:image.f7,
         text:"Adidas",
         name:"cartoon astronaut shirt",
         price:45,
 
     },
+
 ]
+
+
+// export const data1=[
+//     {
+//         id:1,
+//         image:image.n1,
+//         text:"Adidas",
+//         name:"cartoon astronaut shirt",
+//         price:45,
+
+//     },
+//      {
+//         id:2,
+//         image:image.n2,
+//         text:"Adidas",
+//         name:"cartoon astronaut shirt",
+//         price:45,
+
+//     },
+//      {
+//         id:3,
+//         image:image.n3,
+//         text:"Adidas",
+//         name:"cartoon astronaut shirt",
+//         price:45,
+
+//     },
+//      {
+//         id:4,
+//         image:image.n4,
+//         text:"Adidas",
+//         name:"cartoon astronaut shirt",
+//         price:45,
+
+//     },
+//      {
+//         id:5,
+//         image:image.f51,
+//         text:"Adidas",
+//         name:"cartoon astronaut shirt",
+//         price:45,
+
+//     },
+//      {
+//         id:6,
+//         image:image.f7,
+//         text:"Adidas",
+//         name:"cartoon astronaut shirt",
+//         price:45,
+
+//     },
+// ]

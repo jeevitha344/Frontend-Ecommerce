@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/CartSlice";
 import { Link } from "react-router-dom";
 
-const Product = ({ productitems, productitems1 }) => {
+const Product = ({ productitems }) => {
   const dispatch = useDispatch();
   const handelAddToCart = (e, productitems) => {
     e.stopPropagation();

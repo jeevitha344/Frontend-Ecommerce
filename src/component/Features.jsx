@@ -41,8 +41,9 @@ text:'24/7 Support'
   }]
 
   return (
-  <div className='bg-white pb-8 pt-12 px-29 '>
-<div className='container  grid grid-cols-2 md:grid-cols-2 lg:grid-cols-6  gap-8   '>
+  <div className='bg-white pb-8 pt-12 px-29 mb-3  '>
+ 
+<div className='container  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6  gap-8   '>
 {feature.map((element,index)=>
 <div key={index} className='  flex flex-col items-center text-center px-2 py-[9px] border-box shadow  transform transition-transform duration-300 hover:scale-105'>
  <img src= {element.images} alt='' className='my-2'/>
@@ -52,8 +53,8 @@ text:'24/7 Support'
 
 )}
 </div>
-<div className='text-3xl  font-serif flex items-center justify-center mt-19 text-[#088178]'>
-<h1>Features Of Products</h1>
+   <div className='text-xl font-bold  text-center sm:text-2xl font-serif flex items-center justify-center mt-14  text-[#088178]'>
+<h1 className=' ' >Features Of Products</h1>
 </div>
   </div>
   )

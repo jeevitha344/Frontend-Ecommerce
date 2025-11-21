@@ -26,74 +26,55 @@ const Home = () => {
   }, []);
 
   return (
-    // <div className='bg-white mt-2 px'>Home
-    //   <div>
-    //     <div>
-    //       <div>
-
-    //         <div>SHOP BY CATEGORIES</div>
-
-    //       <ul>
-    //         {Categories.map((category,index)=>(
-    //           <li key={index}>
-    //             <div> </div>
-    //             {category}
-    //           </li>
-    //         ))}
-    //       </ul>
-
-    //     </div>
-    //     {/* <img src={} alt="" /> */}
-    //     <p></p>
-    //     <h2></h2>
-    //     <p></p>
-    //     <button></button>
-    //     </div>
-    //   </div>
-    // </div>
-
     <>
-      {/* <div className=' bg-black relative mt-18   '>
-  {<img className='w-full sm: h-[750px] object-cover object-top ' src={image.Hero} alt="" />  /*  object-top ---indicate that it would be fixed at the top */}
-      {/* <h3 className='  sm:absolute top-[230px] left-27 font-bold text-2xl  font-sans'>Trade-In-Offer</h3>
+     {/* <div className=' bg-black relative mt-18   '>
+  {<img className='w-full h-[300px] sm: h-[750px] object-cover object-top ' src={image.Hero} alt="" />  /*  object-top ---indicate that it would be fixed at the top */}
+       {/* <h3 className='  sm:absolute top-[230px] left-27 font-bold text-2xl  font-sans'>Trade-In-Offer</h3>
  <h1 className='  sm:absolute top-[270px] left-27 font-bold text-5xl font-sans'>Super Value Deals</h1>
   <h1 className='absolute top-[330px] text-[#088178] left-27 font-bold text-5xl font-sans'>On All Products</h1>
   <p className='absolute top-[400px] left-27 text-gray-500 font-bold text-m font-sans'>Save More  Coupnes & Up To 70% Off</p>
   <button className='absolute top-[450px] left-27 font-bold text-[#088178] text-lg text-center
   bg-[url("/Image/button.png")] bg-transparent  bg-center w-50 h-12 font-sans
   
-  '> Shop Now </button> */}
-      {/* </div> */}
-      <div className="relative bg-black mt-18">
+  '> Shop Now </button> 
+       </div>  */} 
+      
+      <div className=" bg-black relative mt-18  ">
+
+      
         <img
-          className="w-full h-[400px] sm:h-[550px] md:h-[650px] lg:h-[750px] object-cover object-top"
+          className="w-full  object-contain sm:h-[550px] md:h-[650px] lg:h-[750px] sm:object-cover object-top
+    bg-white "
           src={image.Hero}
           alt=""
         />
 
         {/* Text Section */}
-        <div
+         <div
           className="
+
       absolute inset-0
       flex flex-col justify-center
-      items-start ml-14
+      items-start text-left  ml-10 mt-6
       sm:items-start sm:text-left
-      sm:pl-10 md:pl-10 lg:pl-18
+      sm:pl-10 md:pl-10 lg:pl-18 
+     
+
     "
         >
-          <h3 className="text-black font-bold font-serif text-lg sm:text-xl md:text-2xl">
+          <h3 className="text-black font-bold font-serif text-xm  sm:text-xl md:text-2xl">
             Trade-In-Offer
           </h3>
 
-          <h1 className="text-black font-semibold  font-serif mt-3 text-3xl sm:text-4xl md:text-5xl">
+          <h1 className="text-black font-extrabold  font-serif  text-lg mt-1 sm:text-4xl sm:mt-3 md:text-5xl">
             Super Value Deals
           </h1>
 
-          <h1 className="text-[#088178] font-semibold font-serif mt-3 text-3xl sm:text-4xl md:text-5xl">
+          <h1 className="text-[#088178] font-semibold font-serif  text-lg mt-2 sm:text-4xl sm:mt-3 md:text-5xl">
             On All Products
           </h1>
 
-          <p className="text-gray-600 font-semibold mt-3 text-sm sm:text-base md:text-lg">
+          <p className="text-gray-600 font-semibold text-xs sm:text-base mt-2 sm:mt-3 md:text-lg">
             Save More Coupons & Up To 70% Off
           </p>
 
@@ -103,9 +84,7 @@ const Home = () => {
         bg-[url('/Image/button.png')]
         bg-center bg-no-repeat bg-transparent
         text-[#088178]
-        font-bold text-base sm:text-lg
-        w-36 sm:w-40 md:w-48
-        h-10 sm:h-12
+        font-bold text-base text-xm w-30 p-1  sm:text-lg sm:w-36 sm:py-3 md:w-48 
       "  onClick={()=>navigate('/collection')}
           >
             Shop Now
@@ -116,17 +95,22 @@ const Home = () => {
       <Features />
       <CategorySection />
       <div className="container mx-auto py-12">
-        <h2 className="text-2xl font-bold mb-6 text-center">New Collections</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-          {element?.productelement?.slice(0, 5).map((productitems) => (
+        <h2 className="text-2xl font-bold mb-6 text-center text-[#088178] font-serif">New Collections</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 ">
+          {element?.productelement?.slice(0, 8).map((productitems) => (
             <div key={productitems.id}>
-              {/* // <div>{product.name}</div> */}
-              <Product productitems={productitems} />
+              {/* // <div>{product.name}</div>  */}
+               <Product productitems={productitems} />
             </div>
           ))}
         </div>
-        <Collection />
-      </div>
+        
+      </div> 
+
+
+
+
+      
     </>
   );
 };
