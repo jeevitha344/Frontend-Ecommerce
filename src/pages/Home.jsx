@@ -5,11 +5,12 @@ import { image } from "../assets/index";
 import Collection from "./Collection";
 import Features from "../component/Features";
 import CategorySection from "../component/CategorySection";
-import { setProducts } from "../redux/ProductSlice";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import Product from "./Product";
 import { useNavigate } from "react-router-dom";
+import { fetchProducts } from "../redux/productThunk";
 
 const Home = () => {
   const navigate=useNavigate();
@@ -21,9 +22,10 @@ const Home = () => {
 
   console.log(element);
   useEffect(() => {
-    dispatch(setProducts(data));
-    console.log("home" + data);
-  }, []);
+    // dispatch(setProducts(data));
+    dispatch(fetchProducts());
+    // console.log("home" + data);
+  }, [dispatch]);
 
   return (
     <>

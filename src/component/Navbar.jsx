@@ -14,6 +14,11 @@ const Navbar = () => {
 {/*  for login /register*/}
 const[isOpenModel,setIsOpenModel]=useState(false)
 const[isLogin,setIsLogin]=useState(true)
+{/*  for login state */}
+const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("access"))  
+// Double !! true/false 
+// !! is just ! twice. It converts any value to a strict boolean without changing its truthiness 
+//  first convert it ! true->false and false-> true -- !!  it mens there true value 
 {/*  for search*/}
 const[search,setSearch]=useState('')
 const[showSearch,setShowSearch]=useState(false)
@@ -105,14 +110,38 @@ navigate('/collection')
  {/* mobile view nav link using burger menu*/}
 
 
+{isLoggedIn ? (
+  <button
+    className='text-xm md:block cursor-pointer'
+    onClick={() => {
+      localStorage.removeItem("access"); // remove login token
+      setIsLoggedIn(false); // update state
+      navigate("/"); // redirect to home
+    }}
+  >
+    Logout
+  </button>
+) : (
+  <>
+    <button className='text-xm md:block cursor-pointer' onClick={openLogin}>
+      Login
+    </button>
 
-<button className='text-xm  md:block cursor-pointer'  onClick={()=>setIsOpenModel(true)}>
+    <button className='text-xm md:block cursor-pointer' onClick={openSignUp}>
+      Register
+    </button>
+  </>
+)}
+
+{/* <button className='text-xm  md:block cursor-pointer'  onClick={openLogin}>
   Login
 </button>
 
-<button className=' text-xm  md:block cursor-pointer 'onClick={()=>setIsOpenModel(true)} >
+<button className=' text-xm  md:block cursor-pointer 'onClick={openSignUp} >
   Register
-</button></div>
+</button> */}
+
+</div>
 
 <img onClick={()=>setVisible(true)} src={image.menu_icon}  className='w-5  mr-2 cursor-pointer sm:hidden' alt="" />
  {/* mobile view nav link*/}
@@ -135,8 +164,9 @@ navigate('/collection')
 
 {/*  for login/ register we set the props to modal component*/}
  <Modal isOpenModel={isOpenModel} setIsOpenModel={setIsOpenModel}  >
-{isLogin ? <Login  openSignUp={openSignUp}/>:<Register openLogin={openLogin}/>}
-</Modal> 
+{isLogin ? <Login  openSignUp={openSignUp} setIsOpenModel={setIsOpenModel} setIsLoggedIn={setIsLoggedIn} />:<Register openLogin={openLogin}/>}
+</Modal>  {/* We pass the setIsLoggedIn function as a prop to the Login component. */}
+
 
     </nav>
 

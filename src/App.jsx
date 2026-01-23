@@ -19,32 +19,57 @@ import Register from './component/Register'
 import SearchBar from './component/SearchBar'
 import FilterData from './pages/FilterData'
 import  ProductDetails from './pages/ProductDetails'
+import AdminPanel from './pages/AdminPanel'
+import OrderPanel from './pages/OrderPanel'
+import Products from './pages/Products'
+import DashBoard from './pages/DashBoard'
+import MainLayout from './pages/MainLayout'
+import AddProduct from './pages/AddProduct'
+import EditProduct from './pages/EditProduct'
+
 function App() {
   const [count, setCount] = useState(0)
   const[order,setOrder]=useState(null)
 
+   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('access'))
+  // const hideLayout = location.pathname.startsWith("/admin");
+  
   return (
     <>
      <div className=''>
-      <Navbar/>
-      <SearchBar/>
-      <Routes>
-        <Route path='/' element={<Home/>}></Route>
-        <Route path='/collection' element={<Collection/>}></Route>
-        <Route path='/about' element={<About/>}></Route>
-         <Route path='/contact' element={<Contact/>}></Route>
-           <Route path='/checkout' element={<Checkout  setOrder={setOrder}/>}></Route>
-            <Route path='/Order-confrimation' element={<Orders  order={order}/>}></Route>
-             <Route path='/filter-data' element={<FilterData  order={order}/>}></Route>
-            <Route path='/login' element={<Login/>}></Route>
-            <Route path='/register' element={<Register/>}></Route>
+      {/* {!hideLayout && <Navbar />}
+      {!hideLayout && <SearchBar />} */}
+       <Routes>
+      <Route element={<MainLayout />}>
+        
+        <Route path='/' element={<Home/>}/>
+        <Route path='/collection' element={<Collection/>}/>
+         
+      
+        <Route path='/about' element={<About/>}/>
+         <Route path='/contact' element={<Contact/>}/>
+           <Route path='/checkout' element={<Checkout  setOrder={setOrder}/>}/>
+            <Route path='/Order-confrimation/:id' element={<Orders />}/>
+             <Route path='/filter-data' element={<FilterData  order={order}/>}/>
+            <Route path='/login' element={<Login/>}/>
+            <Route path='/register' element={<Register/>}/>
          {/* <Route path='/Product' element={<Product/>}></Route>  */}
-           <Route path='/productdetails/:id' element={<ProductDetails/>}></Route>
-        <Route path='/card' element={<Card/>}></Route>
+           <Route path='/productdetails/:id' element={<ProductDetails/>}/>
+        <Route path='/card' element={<Card/>}/>
          {/* <Route path='/features' element={<Features/>}></Route> */}
-        </Routes>
-        <Footer/>
+        </Route>
+
+          <Route element={<AdminPanel setIsLoggedIn={setIsLoggedIn} />}>
+        <Route path="/dashboard" element={<DashBoard />} ></Route>
+          <Route path="/products" element={<Products />} ></Route>
+          <Route path="/orderpanel" element={<OrderPanel/>} ></Route>
+           <Route path="/add" element={<AddProduct />} />
+        <Route path="/edit/:id" element={<EditProduct />} />
+         </Route>
+        {/* {!hideLayout && <Footer />} */}
+           </Routes>
       </div> 
+   
     </>
   )
 }

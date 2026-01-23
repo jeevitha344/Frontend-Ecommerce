@@ -18,13 +18,13 @@ const Product = ({ productitems }) => {
 
     <div className="bg-white rounded relative border-none shadow-lg p-4 mt-4 transform transition-transform duration-300 hover: scale-105  mx-7">
       <img
-        src={productitems?.image}
-        alt=""
+        src={productitems?.product_image}
+        alt="product_image loading..."
         className="w-full   object-cover mb-4"
       />
-      <h5 className="text-lg font-semibold">{productitems?.text}</h5>
-      <h3>{productitems?.name}</h3>
-      <p className="text-gray-500">${productitems?.price}</p>
+      <h5 className="text-lg font-semibold">{productitems?.product_name}</h5>
+      <h3>{productitems?.product_description}</h3>
+      <p className="text-gray-500">${productitems?.product_price}</p>
       <div className="flex items-center mt-2 mr-8">
         <FaStar className="text-yellow-500"></FaStar>
         <FaStar className="text-yellow-500"></FaStar>

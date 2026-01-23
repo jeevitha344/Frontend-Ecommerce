@@ -16,20 +16,20 @@ reducers:{
     const itemIndex= state.products.find((item)=>item.id === newItem.id)
     if(itemIndex){
         itemIndex.quantity++
-        itemIndex.totalPrice +=newItem.price
+        itemIndex.totalPrice +=newItem.product_price
     }
     else{
         state.products.push({
             id: newItem.id,
-            name: newItem.name,
-            price: newItem.price,
+            product_name: newItem.product_name,
+            product_price: newItem.product_price,
             quantity:1,
-            totalPrice: newItem.price,
-            image: newItem.image
+            totalPrice: newItem.product_price,
+            product_image: newItem.product_image
         })
     }
 
-    state.totalPrice+= newItem.price;
+    state.totalPrice+= newItem.product_price;
     state.totalquantity++;
  },
 removeFromCart(state,action){
@@ -47,10 +47,10 @@ increaseQuantity(state,action){
     const id=action.payload;
     const findItem =state.products.find((item)=> item.id === id)
     if(findItem){
-     findItem.totalPrice+=findItem.price
+     findItem.totalPrice+=findItem.product_price
      findItem.quantity++
      state.totalquantity++
-     state.totalPrice+=findItem.price
+     state.totalPrice+=findItem.product_price
     
     }
 },
@@ -59,15 +59,17 @@ decreaseQuantity(state,action){
     const findItem =state.products.find((item)=> item.id === id)
     if(findItem.quantity > 1){
     if(findItem){
-     findItem.totalPrice-=findItem.price
+     findItem.totalPrice-=findItem.product_price
      findItem.quantity--
      state.totalquantity--
-     state.totalPrice-=findItem.price
+     state.totalPrice-=findItem.product_price
     
     }
 }
 
 },
+
+
 
 }
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { setProducts } from '../redux/ProductSlice'
+// import { setProducts } from '../redux/ProductSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { FaShoppingBasket, FaShoppingCart, FaStar,FaCarSide,FaQuestion } from "react-icons/fa";
 import { addToCart,increaseQuantity,decreaseQuantity } from "../redux/CartSlice";
@@ -33,17 +33,17 @@ const dispatch=useDispatch()
      <div className='container mx-auto py-8 px-4 md:px-16 lg:px-24' >
 <div className='flex flex-col md:flex-row gap-x-16'>
     <div className='md:w-1/2 py-4 shadow-md md:px-8 h-96 flex justify-center'>
-<img src={product.image} alt={product.name} className='h-full' />
+<img src={product.product_image} alt={product.product_name} className='h-full' />
     </div>
 
 <div className='md:w-1/2 p-4 shadow-md md:p-16 flex flex-col items-center gap-y-2'> 
 <h2 className='text-3xl font-semibold mb-2'>
-    {product.name}
+    {product.product_name}
 
 </h2>
 <p className='text-xl font-semibold text-gray-800 mb-4'>
 
-    ${product.price}
+    ${product.product_price}
 </p>
 <div className='flex items-center mb-4 gap-x-2'>
 
@@ -81,7 +81,7 @@ Ask a Question
 <h3 className='text-xl font-bold mb-2'>
 Product Description
 </h3>
-<p>{ product.description }</p>
+<p>{ product.product_description }</p>
 </div>
 
 

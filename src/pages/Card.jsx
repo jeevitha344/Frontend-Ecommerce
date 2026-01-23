@@ -14,6 +14,8 @@ const Card = () => {
 const[isOpenModel,setIsOpenModel]=useState(false)
  const dispatch = useDispatch()
 const navigate = useNavigate()
+
+
   return (
     <div className=' mx-auto py-8 min-h-96 px-4 md:px-16 lg:px-24 '>  
 
@@ -45,19 +47,19 @@ const navigate = useNavigate()
        className='flex item-center justify-between p-3 border-b  '>
      
         <div className='md:flex items-center space-x-4 '>
-          <img src={product?.image} alt=""  className='w-16 h-16 object-contain rounded '/>
+          <img src={product?.product_image} alt=""  className='w-16 h-16 object-contain rounded '/>
           <div className='flex-1 ml-4 '>
-            <h3 className='text-lg font-semibold '>{product?.name}</h3>
+            <h3 className='text-lg font-semibold '>{product?.product_name}</h3>
           </div>
         </div>
         <div className=' flex space-x-12 items-center '>
-          <p>${product?.price}</p>
+          <p>${product?.product_price}</p>
           <div className='flex items-center justify-center border '>
             <button className='text-xl font-bold px-1.5 border-r ' onClick={()=>dispatch(decreaseQuantity(product.id))}>-</button>
             <p className='text-xl px-2 '>{product?.quantity}</p>
               <button className='text-xl  px-1 border-l ' onClick={()=>dispatch(increaseQuantity(product.id))}> +</button>
           </div>
-          <p>${(product?.quantity * product?.price).toFixed(2)}</p>
+          <p>${(product?.quantity * product?.product_price).toFixed(2)}</p>
 
           <button className='text-red-500 hover:text-red-700 ' onClick={()=> dispatch(removeFromCart(product.id))}>
 
@@ -91,6 +93,13 @@ const navigate = useNavigate()
   <span>Total Price</span>
   <span>${carts.totalPrice.toFixed(2)}</span>
 </div>
+
+<button
+  className="w-full mb-3 border border-gray-400 text-gray-700 py-2 rounded hover:bg-gray-100"
+  onClick={() => navigate('/collection')}
+>
+  Continue Shopping
+</button>
 
 <button className='w-full bg-blue-400 text-white py-2 hover:bg-green-700'onClick={()=> navigate('/checkout')}>Proced to checkout</button>
  </div>
