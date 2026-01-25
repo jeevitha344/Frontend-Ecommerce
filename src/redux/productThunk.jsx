@@ -1,11 +1,11 @@
 import { createAsyncThunk, isRejectedWithValue } from "@reduxjs/toolkit";
 import axios from 'axios';
-
+import BASE_URL from "../api";
 
 export const fetchProducts =createAsyncThunk(
     'product/fetchProducts',
     async ()=>{
-        const response= await axios.get("http://127.0.0.1:8000/app/api/products/");
+        const response= await axios.get(`${BASE_URL}/app/api/products/`);
         return response.data;
 
     }
@@ -16,7 +16,7 @@ export const addProduct = createAsyncThunk(
   async (formData, { rejectWithValue }) => {
     try {
       const res = await axios.post(
-        "http://127.0.0.1:8000/app/api/products/",
+        `${BASE_URL}/app/api/products/`,
         formData,
         {
           headers: {
@@ -39,7 +39,7 @@ export const addProduct = createAsyncThunk(
 export const editProduct = createAsyncThunk(
   "products/edit",
   async ({ id, formData }) => {
-    const res = await fetch(`http://127.0.0.1:8000/app/api/products/${id}/`, {
+    const res = await fetch(`${BASE_URL}/app/api/products/${id}/`, {
       method: "PUT",
       body: formData
     });
@@ -49,7 +49,7 @@ export const editProduct = createAsyncThunk(
 
 // Delete product
 export const deleteProduct = createAsyncThunk('products/delete', async (id) => {
-  await axios.delete(`http://127.0.0.1:8000/app/api/products/${id}/`);
+  await axios.delete(`${BASE_URL}/app/api/products/${id}/`);
   return id; // return id to remove from store
 });
 
@@ -59,7 +59,7 @@ export const fetchAllOrders = createAsyncThunk(
       const token = localStorage.getItem("access"); // get JWT token
       if (!token) throw new Error("User not authenticated");
 
-      const res = await axios.get("http://127.0.0.1:8000/app/api/order/", {
+      const res = await axios.get(`${BASE_URL}/app/api/order/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -77,7 +77,7 @@ export const signupuser= createAsyncThunk(
     async(userdata,{rejectWithValue})=>{
         try{
             const response =await axios.post(
-                "http://127.0.0.1:8000/app/api/signup/",
+                `${BASE_URL}/app/api/signup/`,
                 userdata
             );
             return response.data;
@@ -93,7 +93,7 @@ export const loginuser= createAsyncThunk(
     'loginslicer/loginuser',
     async(userdata,{rejectWithValue})=>{
         try{
-            const response=await axios.post("http://127.0.0.1:8000/app/api/login/",
+            const response=await axios.post(`${BASE_URL}/app/api/login/`,
                 userdata);
              localStorage.setItem("access", response.data.access);
        localStorage.setItem("refresh", response.data.refresh);
@@ -112,7 +112,7 @@ export const refreshAccessToken = async () => {
 
   try {
     const res = await axios.post(
-      "http://127.0.0.1:8000/app/api/token/refresh/",
+      `${BASE_URL}/app/api/token/refresh/`,
       { refresh }
     );
 
@@ -134,7 +134,7 @@ export const fetchOrders =createAsyncThunk(
 
     try {
       const res = await axios.get(
-        `http://127.0.0.1:8000/app/api/order/${id}/`,
+        `${BASE_URL}/app/api/order/${id}/`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -151,7 +151,7 @@ export const fetchOrders =createAsyncThunk(
 
         // Retry API
         const retry = await axios.get(
-          `http://127.0.0.1:8000/app/api/order/${id}/`,
+          `${BASE_URL}/app/api/order/${id}/`,
           {
             headers: { Authorization: `Bearer ${newToken}` },
           }

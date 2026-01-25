@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { refreshAccessToken } from '../redux/productThunk'
-
+import BASE_URL from "../api";
 
 const Checkout = ({setOrder}) => { 
   
@@ -86,7 +86,7 @@ if (!billingInfo.name || !billingInfo.email || !billingInfo.phone) {
     let access = localStorage.getItem("access");
 
     let response = await axios.post(
-      "http://127.0.0.1:8000/app/api/order/",
+      `${BASE_URL}/app/api/order/`,
       newOrder,
       { headers: { Authorization: `Bearer ${access}` } }
     );
@@ -107,7 +107,7 @@ if (!billingInfo.name || !billingInfo.email || !billingInfo.phone) {
        localStorage.setItem("access", newToken);
 
 const retryResponse = await axios.post(
-  "http://127.0.0.1:8000/app/api/order/",
+  `${BASE_URL}/app/api/order/`,
   newOrder,
   { headers: { Authorization: `Bearer ${newToken}` } }
 );
