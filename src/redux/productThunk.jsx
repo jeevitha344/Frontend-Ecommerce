@@ -39,11 +39,10 @@ export const addProduct = createAsyncThunk(
 export const editProduct = createAsyncThunk(
   "products/edit",
   async ({ id, formData }) => {
-    const res = await fetch(`${BASE_URL}/app/api/products/${id}/`, {
-      method: "PUT",
-      body: formData
+    const res = await axios.put(`${BASE_URL}/app/api/products/${id}/`, formData, {
+      headers: { "Content-Type": "multipart/form-data" },
     });
-    return await res.json();
+    return res.data;
   }
 );
 
