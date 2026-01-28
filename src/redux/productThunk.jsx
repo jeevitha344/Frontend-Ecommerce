@@ -7,7 +7,7 @@ export const fetchProducts = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem("access");
-
+       console.log("TOKEN:", token);
       const res = await axios.get(
         `${BASE_URL}/app/api/products/`,
         {
