@@ -3,7 +3,7 @@ import { FaShoppingBasket, FaShoppingCart, FaStar } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/CartSlice";
 import { Link } from "react-router-dom";
-import BASE_URL from "../api";
+
 const Product = ({ productitems }) => {
   const dispatch = useDispatch();
   const handelAddToCart = (e, productitems) => {
@@ -18,7 +18,7 @@ const Product = ({ productitems }) => {
 
     <div className="bg-white rounded relative border-none shadow-lg p-4 mt-4 transform transition-transform duration-300 hover: scale-105  mx-7">
       <img
-        src={`${BASE_URL}${productitems?.product_image}`}
+        src={productitems?.product_image}
         alt="product_image loading..."
         className="w-full   object-cover mb-4"
       />

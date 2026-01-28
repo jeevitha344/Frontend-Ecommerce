@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts, deleteProduct } from "../redux/productThunk";
 import { useNavigate } from "react-router-dom";
-import BASE_URL from "../api";
+
 const Products = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ if (status === "loading") {
             className="bg-white rounded-xl shadow-md hover:shadow-xl transition p-4"
           >
             <img
-              src={`${BASE_URL}${item.product_image}`}
+              src={item.product_image} 
               alt={item.product_name}
               className="w-full h-48 object-cover rounded-lg"
             />

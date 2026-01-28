@@ -302,7 +302,7 @@ navigate(`/Order-confrimation/${retryResponse.data.id}`);
   {cart.products.map(product =>(
     <div key={product.id} className='flex justify-between'>
       <div className='flex items-center'>
-        <img src = {`${BASE_URL}${product?.product_image}`}  alt={product.product_name} className='w-16 h-16 object-contain rounded' />
+        <img src = {product?.product_image}  alt={product.product_name} className='w-16 h-16 object-contain rounded' />
         <div className='ml-4' >
           <h4 className='text-md font-semibold'>{product?.product_name}</h4>
 <p className='text-gray-600'>${product.product_price} x  {product.quantity}</p>         
