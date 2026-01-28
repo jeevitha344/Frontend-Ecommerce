@@ -13,13 +13,13 @@ import BASE_URL from "../api";
 export const fetchProducts= createAsyncThunk(
   'order/fetchAll', async (_, { rejectWithValue }) => {
     try {
-      const token = localStorage.getItem("access"); // get JWT token
-      if (!token) throw new Error("User not authenticated");
+      // const token = localStorage.getItem("access"); // get JWT token
+      // if (!token) throw new Error("User not authenticated");
 
       const res = await axios.get(`${BASE_URL}/app/api/products/`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        // headers: {
+        //   Authorization: `Bearer ${token}`,
+        // },
       });
       console.log("res",res)
       return res.data; // this will go to fulfilled
