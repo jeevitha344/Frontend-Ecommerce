@@ -2,13 +2,32 @@ import { createAsyncThunk, isRejectedWithValue } from "@reduxjs/toolkit";
 import axios from 'axios';
 import BASE_URL from "../api";
 
-export const fetchProducts =createAsyncThunk(
-    'product/fetchProducts',
-    async ()=>{
-        const response= await axios.get(`${BASE_URL}/app/api/products/`);
-        return response.data;
+// export const fetchProducts =createAsyncThunk(
+//     'product/fetchProducts',
+//     async ()=>{
+//         const response= await axios.get(`${BASE_URL}/app/api/products/`);
+//         return response.data;
 
+//     }
+// )
+export const fetchProducts= createAsyncThunk(
+  'order/fetchAll', async (_, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem("access"); // get JWT token
+      if (!token) throw new Error("User not authenticated");
+
+      const res = await axios.get(`${BASE_URL}/app/api/products/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log("res",res)
+      return res.data; // this will go to fulfilled
+      
+    } catch (err) {
+      return rejectWithValue(err.response?.data || err.message);
     }
+  }
 )
 
 export const addProduct = createAsyncThunk(
