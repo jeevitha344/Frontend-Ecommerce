@@ -34,7 +34,8 @@ const Product = ({ productitems }) => {
       </div>
       <div
         className="absolute bottom-4 right-2 flex items-center justify-center w-8 h-8  bg-[#088178] group text-white text-sm rounded-full
-       
+
+        
        "
         onClick={(e) => handelAddToCart(e, productitems)}
       >
