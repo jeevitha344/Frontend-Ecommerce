@@ -34,12 +34,14 @@ export const addProduct = createAsyncThunk(
   "product/add",
   async (formData, { rejectWithValue }) => {
     try {
+       const token = localStorage.getItem("access"); // get JWT token
+      if (!token) throw new Error("User not authenticated");
       const res = await axios.post(
         `${BASE_URL}/app/api/products/`,
         formData,
         {
           headers: {
-            "Content-Type": "multipart/form-data",
+            "Content-Type": "multipart/form-data", Authorization: `Bearer ${token}`,
           },
         }
       );
