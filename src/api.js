@@ -1,2 +1,2 @@
-const BASE_URL = "https://fullstack-ecommerce-km52.onrender.com";
+const BASE_URL = "https://backend-e-commerce-nnnz.onrender.com";
 export default BASE_URL;
