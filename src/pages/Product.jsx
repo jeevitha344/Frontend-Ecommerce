@@ -18,7 +18,7 @@ const Product = ({ productitems }) => {
 
     <div className="bg-white rounded relative border-none shadow-lg p-4 mt-4 transform transition-transform duration-300 hover: scale-105  mx-7">
       <img
-        src={productitems?.product_image}
+        src={`${BASE_URL}${productitems?.product_image}`}
         alt="product_image loading..."
         className="w-full   object-cover mb-4"
       />

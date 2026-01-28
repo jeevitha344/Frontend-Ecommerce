@@ -52,7 +52,7 @@ if (status === "loading") {
             className="bg-white rounded-xl shadow-md hover:shadow-xl transition p-4"
           >
             <img
-              src={item.product_image}
+              src={`${BASE_URL}${item.product_image}`}
               alt={item.product_name}
               className="w-full h-48 object-cover rounded-lg"
             />
