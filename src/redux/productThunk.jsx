@@ -2,7 +2,7 @@ import { createAsyncThunk, isRejectedWithValue } from "@reduxjs/toolkit";
 import axios from 'axios';
 import BASE_URL from "../api";
 
-export const fetchAllProducts = createAsyncThunk(
+export const fetchProducts = createAsyncThunk(
   "product/fetchAll",
   async (_, { rejectWithValue }) => {
     try {
