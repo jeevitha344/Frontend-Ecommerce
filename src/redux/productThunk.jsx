@@ -15,13 +15,12 @@ export const addProduct = createAsyncThunk(
   "product/add",
   async (formData, { rejectWithValue }) => {
     try {
-      const token = localStorage.getItem("access"); 
       const res = await axios.post(
         `${BASE_URL}/app/api/products/`,
         formData,
         {
           headers: {
-            "Content-Type": "multipart/form-data",Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
           },
         }
       );
