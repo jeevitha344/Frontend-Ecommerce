@@ -2,14 +2,27 @@ import { createAsyncThunk, isRejectedWithValue } from "@reduxjs/toolkit";
 import axios from 'axios';
 import BASE_URL from "../api";
 
-export const fetchProducts =createAsyncThunk(
-    'product/fetchProducts',
-    async ()=>{
-        const response= await axios.get(`${BASE_URL}/app/api/products/`);
-        return response.data;
+export const fetchAllProducts = createAsyncThunk(
+  "product/fetchAll",
+  async (_, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem("access");
 
+      const res = await axios.get(
+        `${BASE_URL}/app/api/products/`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(err.response?.data || err.message);
     }
-)
+  }
+);
 
 export const addProduct = createAsyncThunk(
   "product/add",
