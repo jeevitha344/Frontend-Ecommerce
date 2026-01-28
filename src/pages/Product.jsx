@@ -3,7 +3,7 @@ import { FaShoppingBasket, FaShoppingCart, FaStar } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/CartSlice";
 import { Link } from "react-router-dom";
-
+import BASE_URL from "../api";
 const Product = ({ productitems }) => {
   const dispatch = useDispatch();
   const handelAddToCart = (e, productitems) => {
