@@ -68,10 +68,28 @@ export const editProduct = createAsyncThunk(
 );
 
 // Delete product
-export const deleteProduct = createAsyncThunk('products/delete', async (id) => {
-  await axios.delete(`${BASE_URL}/app/api/products/${id}/`);
-  return id; // return id to remove from store
-});
+export const deleteProduct = createAsyncThunk(
+  'products/delete',
+  async (id, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem("access");
+      if (!token) throw new Error("User not authenticated");
+
+      await axios.delete(
+        `${BASE_URL}/app/api/products/${id}/`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      return id; // remove from Redux store
+    } catch (err) {
+      return rejectWithValue(err.response?.data || err.message);
+    }
+  }
+);
 
 export const fetchAllOrders = createAsyncThunk(
   'order/fetchAll', async (_, { rejectWithValue }) => {
