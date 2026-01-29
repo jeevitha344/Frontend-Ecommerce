@@ -32,84 +32,80 @@ const Contact = () => {
       </div>
 
       {/* Content */}
-      <div className="my-10 flex flex-col md:flex-row gap-10 mb-28 justify-center items-center px-4">
-        {/* Left Section */}
-        <div className="flex flex-col gap-6 max-w-md">
-          <img
-            src={image.contact}
-            alt="Contact"
-            className="w-full rounded-lg"
-          />
+      <div className="my-16 max-w-6xl mx-auto px-4">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    
+    {/* Left Section */}
+    <div className="space-y-6">
+      <img
+        src={image.contact}
+        alt="Contact"
+        className="w-full h-[280px] object-cover rounded-xl"
+      />
 
-          <p className="font-semibold text-xl text-gray-600">Our Store</p>
-          <p className="text-gray-500">
-            54709 Hopes <br />
-            Suite 350, Krishna Nagar, CBE
-          </p>
-
-          <p className="text-gray-500">
-            Tel: (415) 555-0132 <br />
-            Email: admin@forever.com
-          </p>
-
-          <p className="font-semibold text-xl text-gray-600">
-            Careers at Forever
-          </p>
-          <p className="text-gray-500">
-            Learn more about our teams and job openings.
-          </p>
-
-          <button className="border border-black px-8 py-3 text-sm hover:bg-black hover:text-white transition-all duration-500 w-fit">
-            Explore Jobs
-          </button>
-        </div>
-
-        {/* Right Section - Contact Form */}
-        <div className="w-full max-w-md bg-white shadow-lg rounded-xl p-8">
-          <h3 className="text-xl font-semibold text-gray-700 mb-4">
-            Send us a message
-          </h3>
-
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-700"
-              required
-            />
-
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-700"
-              required
-            />
-
-            <textarea
-              name="message"
-              placeholder="Your Message"
-              rows="5"
-              value={formData.message}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-700"
-              required
-            ></textarea>
-
-            <button
-              type="submit"
-              className="w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition"
-            >
-              Send Message
-            </button>
-          </form>
-        </div>
+      <div>
+        <h3 className="text-xl font-semibold text-gray-700 mb-2">
+          Our Store
+        </h3>
+        <p className="text-gray-500 leading-relaxed">
+          54709 Hopes <br />
+          Suite 350, Krishna Nagar, CBE
+        </p>
       </div>
+
+      <p className="text-gray-500">
+        Tel: (415) 555-0132 <br />
+        Email: admin@forever.com
+      </p>
+
+      <div>
+        <h3 className="text-xl font-semibold text-gray-700 mb-1">
+          Careers at Forever
+        </h3>
+        <p className="text-gray-500 mb-3">
+          Learn more about our teams and job openings.
+        </p>
+        <button className="border border-black px-6 py-2 text-sm hover:bg-black hover:text-white transition">
+          Explore Jobs
+        </button>
+      </div>
+    </div>
+
+    {/* Right Section - Form */}
+    <div className="bg-white rounded-2xl shadow-xl p-8">
+      <h3 className="text-2xl font-semibold text-gray-800 mb-6">
+        Send us a message
+      </h3>
+
+      <form className="space-y-4">
+        <input
+          type="text"
+          placeholder="Your Name"
+          className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+        />
+
+        <input
+          type="email"
+          placeholder="Your Email"
+          className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+        />
+
+        <textarea
+          rows="4"
+          placeholder="Your Message"
+          className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+        ></textarea>
+
+        <button
+          type="submit"
+          className="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition"
+        >
+          Send Message
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
     </div>
   );
 };
