@@ -32,7 +32,7 @@ const Contact = () => {
       </div>
 
       {/* Content */}
-      <div className="my-16 max-w-6xl mx-auto px-4">
+      <div className="my-6 max-w-6xl mx-auto px-4 py-3">
   <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
     
     {/* Left Section */}
@@ -72,8 +72,8 @@ const Contact = () => {
     </div>
 
     {/* Right Section - Form */}
-    <div className="bg-white rounded-2xl shadow-xl p-8">
-      <h3 className="text-2xl font-semibold text-gray-800 mb-6">
+    <div className="bg-white rounded-2xl shadow-xl px-5 py-5 mb-60">
+      <h3 className="text-2xl font-semibold text-gray-800 mb-5 ml-3">
         Send us a message
       </h3>
 
