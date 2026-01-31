@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { fetchOrders } from "../redux/productThunk";
 import axios from 'axios';
+import { clearCart } from '../redux/CartSlice';
 
 const Orders = () => {    //from app page usestatae props----order
 const {id}= useParams();
@@ -23,6 +24,7 @@ const dispatch=useDispatch();
     //   .then((res) => setOrder(res.data))
     //   .catch((err) => console.error(err));
        dispatch(fetchOrders(id))}
+       dispatch(clearCart());
   }, [id,dispatch]); 
 console.log("order",orders);
   return (

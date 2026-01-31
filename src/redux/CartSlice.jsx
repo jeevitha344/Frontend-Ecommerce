@@ -69,7 +69,11 @@ decreaseQuantity(state,action){
 
 },
 
-
+clearCart: (state) => {
+      state.products = [];
+      state.totalPrice = 0;
+      state.totalquantity = 0;
+    },
 
 }
 
