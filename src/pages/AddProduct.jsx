@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../redux/productThunk";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AddProduct = () => {
   const dispatch = useDispatch();
@@ -35,7 +36,9 @@ const handleSubmit = async (e) => {
 
   dispatch(addProduct(data))
     .unwrap()
-    .then(() => navigate("/products/"))
+    
+    .then(() =>{toast.success("Product added successfully!", { position: "top-right" });
+     navigate("/products/")})
     .catch((err) => console.log("Error adding product:", err));
 };
 
