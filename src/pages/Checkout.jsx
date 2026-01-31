@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { refreshAccessToken } from '../redux/productThunk'
 import BASE_URL from "../api";
+import { toast } from "react-toastify";
 
 const Checkout = ({setOrder}) => { 
   
@@ -91,7 +92,9 @@ if (!billingInfo.name || !billingInfo.email || !billingInfo.phone) {
       { headers: { Authorization: `Bearer ${access}` } }
     );
 
-    alert("Order placed!");
+     toast.success("Order placed successfully!", {
+        position: "top-right",
+      });
     navigate(`/Order-confrimation/${response.data.id}`);
   } catch (err) {
     // 🔁 Token expired → refresh

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { FaShoppingBasket, FaShoppingCart, FaStar,FaCarSide,FaQuestion } from "react-icons/fa";
 import { addToCart,increaseQuantity,decreaseQuantity } from "../redux/CartSlice";
-
+import { toast } from "react-toastify";
 const ProductDetails = () => {
     const{id}=useParams()//get the id from the product component
 
@@ -18,7 +18,9 @@ const dispatch=useDispatch()
  e.stopPropagation();
     e.preventDefault();
     dispatch(addToCart(product))
-    alert("product Added successfully");
+     toast.success("Product added successfully!", {
+        position: "top-right",
+      });
    }
 
     useEffect(()=>{

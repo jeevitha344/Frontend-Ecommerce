@@ -61,6 +61,10 @@ if (status === "loading") {
               {item.product_name}
             </h3>
 
+             <p className="mt-3 text-lg font-semibold text-gray-800">
+              {item.product_description}
+            </p>
+
             <p className="text-green-600 font-bold text-xl">
               ${item.product_price}
             </p>

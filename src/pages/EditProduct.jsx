@@ -16,6 +16,8 @@ const EditProduct = () => {
   const [formData, setFormData] = useState({
     product_name: "",
     product_price: "",
+      product_description: "",
+  product_category: "",
     product_image: null
   });
 
@@ -25,26 +27,33 @@ const EditProduct = () => {
       setFormData({
         product_name: product.product_name,
         product_price: product.product_price,
+         product_description: product.product_description,
+      product_category: product.product_category,
         product_image: null
       });
     }
   }, [product]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    const data = new FormData();
-    data.append("product_name", formData.product_name);
-    data.append("product_price", formData.product_price);
+  const data = new FormData();
+  data.append("product_name", formData.product_name);
+  data.append("product_price", formData.product_price);
+  data.append("product_description", formData.product_description);
+  data.append("product_category", formData.product_category);
 
-    // only update image if new image selected
-    if (formData.product_image) {
-      data.append("product_image", formData.product_image);
-    }
+  if (formData.product_image) {
+    data.append("product_image", formData.product_image);
+  }
 
-    dispatch(editProduct({ id, formData: data }));
-    navigate("/products");
-  };
+  try {
+    await dispatch(editProduct({ id, formData: data })).unwrap();
+    navigate("/products"); // ✅ only after success
+  } catch (err) {
+    console.error("Edit failed:", err);
+  }
+};
 
   return (
     <div className="flex justify-center mt-10">
@@ -74,13 +83,35 @@ const EditProduct = () => {
           placeholder="Product Price"
           className="w-full border p-2 mb-3 rounded"
         />
+        <input
+          value={formData.product_description}
+          onChange={(e) =>
+            setFormData({ ...formData, product_description: e.target.value })
+          }
+          placeholder="Product Description"
+          className="w-full border p-2 mb-3 rounded"
+        />
+        <select
+  
+  value={formData.product_category}
+  onChange={(e) =>
+            setFormData({ ...formData, product_category: e.target.value })
+          }
+  className="w-full mb-4 p-3 border rounded-lg"
+>
+  <option value="">Select Category</option>
+  <option value={1}>women</option>
+  <option value={2}>men</option>
+  <option value={3}>kids</option>
+</select>
 
         <input
           type="file"
           onChange={(e) =>
             setFormData({ ...formData, product_image: e.target.files[0] })
           }
-          className="w-full mb-4"
+          className="w-full mb-4 p-2 border rounded-lg file:bg-[#088178] file:text-white file:px-4 file:py-1 file:rounded file:border-0"
+
         />
 
         <div className="flex justify-between">

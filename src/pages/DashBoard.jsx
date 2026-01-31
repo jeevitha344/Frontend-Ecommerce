@@ -11,7 +11,12 @@ const DashBoard = () => {
   }, [dispatch])
 
   const orders = useSelector((state) => state.order.order)
-
+const totalRevenue = orders?.data
+  ? orders.data.reduce(
+      (sum, order) => sum + Number(order.total_price || 0),
+      0
+    )
+  : 0
   return (
     <div className="p-2">
       <h2 className="text-2xl font-bold text-[#088178] mb-11">
@@ -46,7 +51,9 @@ const DashBoard = () => {
         <div className="bg-gradient-to-r from-[#4f46e5] to-[#6366f1] text-white p-8 rounded-xl shadow-lg transform transition hover:scale-105">
           <div className="flex items-center justify-between">
             <DollarSign size={40} />
-            <span className="text-4xl font-bold">$3,500</span>
+         <span className="text-4xl font-bold">
+  ₹{totalRevenue}
+</span>
           </div>
           <p className="mt-4 text-lg">Revenue</p>
         </div>

@@ -26,6 +26,8 @@ import DashBoard from './pages/DashBoard'
 import MainLayout from './pages/MainLayout'
 import AddProduct from './pages/AddProduct'
 import EditProduct from './pages/EditProduct'
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -69,7 +71,15 @@ function App() {
         {/* {!hideLayout && <Footer />} */}
            </Routes>
       </div> 
-   
+    <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnHover
+        theme="light"
+      />
     </>
   )
 }

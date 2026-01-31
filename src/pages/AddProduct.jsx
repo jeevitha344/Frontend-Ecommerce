@@ -20,25 +20,24 @@ const AddProduct = () => {
   };
 const handleSubmit = async (e) => {
   e.preventDefault();
-if (!formData.product_category) {
+
+  if (!formData.product_category) {
     alert("Please select a category");
     return;
   }
-//  const data = new FormData();
-// data.append("product_name", formData.product_name);
-// data.append("product_description", formData.product_description);
-// data.append("product_price", formData.product_price);
-// data.append("product_category", formData.product_category || "");
 
-//  // Category ID as number/string
-// data.append("product_image", formData.product_image);
-  
-     dispatch(addProduct(formData))
-  .unwrap()  // ensures you can catch errors
-  .then(() =>  navigate("/products/"))
-  .catch((err) => console.log("Error adding product:", err));
+  const data = new FormData();
+  data.append("product_name", formData.product_name);
+  data.append("product_price", formData.product_price);
+  data.append("product_description", formData.product_description);
+  data.append("product_category", formData.product_category);
+  data.append("product_image", formData.product_image);
 
-}
+  dispatch(addProduct(data))
+    .unwrap()
+    .then(() => navigate("/products/"))
+    .catch((err) => console.log("Error adding product:", err));
+};
 
 console.log(formData)
 
