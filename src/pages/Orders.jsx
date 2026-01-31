@@ -19,11 +19,7 @@ const dispatch=useDispatch();
       dispatch(fetchOrders(id))
     }
   }, [id, dispatch]);
-   useEffect(() => {
-    if (orders && orders.id === Number(id)) { // only clear after the correct order loads
-      dispatch(clearCart());
-    }
-  }, [orders, id, dispatch]);
+
 console.log("order",orders);
   return (
     <div className='mt-28 ' >

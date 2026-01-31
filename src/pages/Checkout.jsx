@@ -6,7 +6,7 @@ import axios from 'axios'
 import { refreshAccessToken } from '../redux/productThunk'
 import BASE_URL from "../api";
 import { toast } from "react-toastify";
-
+import { clearCart } from '../redux/CartSlice'
 const Checkout = ({setOrder}) => { 
   
    //from app page usestatae props----setOrder
@@ -29,7 +29,7 @@ const[billingInfo,setBillingInfo]=useState({
 
 const cart= useSelector(state => state.cart)
 
-const handelOrder=async (e)=>{
+const handleOrder=async (e)=>{
  
 const newOrder={
       name: billingInfo.name,
@@ -95,6 +95,7 @@ if (!billingInfo.name || !billingInfo.email || !billingInfo.phone) {
      toast.success("Order placed successfully!", {
         position: "top-right",
       });
+      dispatch(clearCart()); // ✅ clear cart here
     navigate(`/Order-confrimation/${response.data.id}`);
   } catch (err) {
     // 🔁 Token expired → refresh
@@ -336,7 +337,7 @@ navigate(`/Order-confrimation/${retryResponse.data.id}`);
   </div>
 
 <button className='w-full bg-blue-500 text-white py-2 mt-3 hover:bg-green-700'
-onClick={handelOrder}
+onClick={handleOrder}
 
 >Place Order</button>
 

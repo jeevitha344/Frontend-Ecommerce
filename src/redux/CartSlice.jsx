@@ -80,5 +80,5 @@ clearCart: (state) => {
 })
 
 
-export const {addToCart,removeFromCart,increaseQuantity,decreaseQuantity}= cartSlice.actions
+export const {addToCart,removeFromCart,increaseQuantity,decreaseQuantity,clearCart}= cartSlice.actions
 export default cartSlice.reducer
