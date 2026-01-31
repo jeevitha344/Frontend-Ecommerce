@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editProduct } from "../redux/productThunk";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const EditProduct = () => {
   const { id } = useParams(); // get id from URL
@@ -49,6 +50,7 @@ const EditProduct = () => {
 
   try {
     await dispatch(editProduct({ id, formData: data })).unwrap();
+    toast.success("Product added successfully!", { position: "top-right" });
     navigate("/products"); // ✅ only after success
   } catch (err) {
     console.error("Edit failed:", err);
