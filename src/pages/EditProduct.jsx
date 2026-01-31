@@ -50,7 +50,7 @@ const EditProduct = () => {
 
   try {
     await dispatch(editProduct({ id, formData: data })).unwrap();
-    toast.success("Product added successfully!", { position: "top-right" });
+    toast.success("Product update successfully!", { position: "top-right" });
     navigate("/products"); // ✅ only after success
   } catch (err) {
     console.error("Edit failed:", err);
