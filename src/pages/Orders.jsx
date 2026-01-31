@@ -14,18 +14,17 @@ const navigate=useNavigate();
 // const [order, setOrder] = useState(null);
 const dispatch=useDispatch();
  useEffect(() => {
-  if (id){
-    // axios
-    //   .get(`http://127.0.0.1:8000/app/api/order/${id}/`, {
-    //     headers: {
-    //       Authorization: `Bearer ${localStorage.getItem("access")}`
-    //     }
-    //   })
-    //   .then((res) => setOrder(res.data))
-    //   .catch((err) => console.error(err));
-       dispatch(fetchOrders(id))}
-       dispatch(clearCart());
-  }, [id,dispatch]); 
+    if (id) {
+      // Fetch the order by ID
+      dispatch(fetchOrders(id))
+        .unwrap()  // if using createAsyncThunk
+        .then(() => {
+          // Clear cart only after order is fetched successfully
+          dispatch(clearCart());
+        })
+        .catch(err => console.error(err));
+    }
+  }, [id, dispatch]);
 console.log("order",orders);
   return (
     <div className='mt-28 ' >
