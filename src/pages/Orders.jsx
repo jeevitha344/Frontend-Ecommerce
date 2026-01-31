@@ -17,12 +17,6 @@ const dispatch=useDispatch();
     if (id) {
       // Fetch the order by ID
       dispatch(fetchOrders(id))
-        .unwrap()  // if using createAsyncThunk
-        .then(() => {
-          // Clear cart only after order is fetched successfully
-          dispatch(clearCart());
-        })
-        .catch(err => console.error(err));
     }
   }, [id, dispatch]);
    useEffect(() => {
