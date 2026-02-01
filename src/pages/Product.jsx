@@ -47,7 +47,7 @@ const Product = ({ productitems }) => {
           {/* Add to Cart button */}
            <button
         onClick={handleAddToCart}
-        className="absolute bottom-4 right-4 w-10 h-10 bg-[#088178] text-white rounded-full flex items-center justify-center shadow-lg"
+        className="absolute bottom-4 right-4 w-10 h-10 bg-[#088178] text-white rounded-full flex items-center justify-center shadow-lg hover:bg-[#065f52] transition-colors"
       >
         <FaShoppingCart />
       </button>
