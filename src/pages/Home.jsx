@@ -11,14 +11,20 @@ import { useEffect } from "react";
 import Product from "./Product";
 import { useNavigate } from "react-router-dom";
 import { fetchProducts } from "../redux/productThunk";
+import { data as mockData } from '../assets/MockData'
 
 const Home = () => {
   const navigate=useNavigate();
   const dispatch = useDispatch();
-  {
-    /*  store->Product array ....> inside element access*/
-  }
-  const element = useSelector((state) => state.Product);
+
+  // {
+  //   /*  store->Product array ....> inside element access*/
+  // }
+  // const element = useSelector((state) => state.Product.productelement);
+const element = useSelector(state => state.Product.productelement);
+// const status = useSelector(state => state.Product.status);
+// const error = useSelector(state => state.Product.error);
+
 
   console.log(element);
   useEffect(() => {
@@ -26,6 +32,35 @@ const Home = () => {
     dispatch(fetchProducts());
     // console.log("home" + data);
   }, [dispatch]);
+
+  const displayData =
+    status === "success" && element.length > 0
+      ? element
+      : mockData; // fallback if API fails or empty
+  
+  if (status === 'loading') {
+    return <p className="text-center mt-10">Loading products...</p>;
+  }
+  
+  if (status === 'error') {
+    console.warn("API failed, showing mock data:", error);
+  }
+  
+  // const displayData = element?.length > 0 ? element : mockData
+  // If API fails, show mockData
+// const displayData =
+//   status === "success" && element.length > 0
+//     ? element
+//     : mockData; // fallback if API fails or empty
+
+// if (status === 'loading') {
+//   return <p className="text-center mt-10">Loading products...</p>;
+// }
+
+// if (status === 'error') {
+//   console.warn("API failed, showing mock data:", error);
+// }
+//  console.log(displayData);
 
   return (
     <>
@@ -99,7 +134,7 @@ const Home = () => {
       <div className="container mx-auto py-12">
         <h2 className="text-2xl font-bold mb-6 text-center text-[#088178] font-serif">New Collections</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 ">
-          {element?.productelement?.slice(0, 8).map((productitems) => (
+          {displayData?.slice(0, 8).map((productitems) => (
             <div key={productitems.id}>
               {/* // <div>{product.name}</div>  */}
                <Product productitems={productitems} />

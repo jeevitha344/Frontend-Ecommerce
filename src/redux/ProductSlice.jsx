@@ -1,5 +1,6 @@
 import {createSlice } from "@reduxjs/toolkit"
 import { fetchProducts,addProduct,editProduct,deleteProduct} from "./productThunk"; // async API call
+import { data as mockData } from '../assets/MockData';
 const initialState={
  productelement:[],
 searchTerm:'',
@@ -53,7 +54,13 @@ extraReducers:(builder)=>{
       // delete product
     .addCase(deleteProduct.fulfilled, (state, action) => {
         state.productelement = state.productelement.filter(p => p.id !== action.payload);
-      });
+      })
+ .addCase(fetchProducts.rejected, (state, action) => {
+  state.status = 'error';
+  state.error = action.error.message || "Failed to fetch products";
+  state.productelement = mockData;    // fallback to mock data
+  state.filteredData = mockData;
+});
     
 
     //   .addCase(fetchProducts.rejected,(state,action)=>{
@@ -65,6 +72,7 @@ extraReducers:(builder)=>{
     //     state.error=action.error.message;
     // })
 }
+
 })
 
 export const {setSearchTerm}= productSlice.actions

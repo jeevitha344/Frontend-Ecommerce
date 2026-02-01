@@ -16,7 +16,7 @@ export const data=[
         text:"Urban Mode",
         name:"Tropical Cartoon Shirt",
         price:45,
-        description:'A vibrant short-sleeve shirt with tropical cartoon prints, perfect for casual outings or summer beach vibes. Made with soft breathable fabric.'
+        description:'tropical cartoon prints'
 
     },
      {
@@ -25,7 +25,7 @@ export const data=[
         text:"Leaf Wear",
         name:"Palm Leaf Shirt",
         price:45,
-        description:'Classic green palm leaf patterns on a white background. Ideal for laid-back weekends or vacation days. Lightweight and comfy fit.'
+        description:'Classic green palm leaf patterns'
 
     },
      {
@@ -34,7 +34,7 @@ export const data=[
         text:" Bloom Core",
         name:"Floral Sunset Shirt",
         price:45,
-        description:'A stylish floral printed shirt in warm tones, inspired by sunset hues. Designed for both style and comfort. Easy button-up style.'
+        description:'A stylish floral printed shirt'
 
     },
      {
@@ -43,7 +43,7 @@ export const data=[
         text:"Soft Hue",
         name:"Pink Bloom Shirt",
         price:45,
-        description:'Light and elegant, this shirt features delicate pink floral prints. Perfect for a casual day out or semi-formal occasions.'
+        description:'pink floral prints'
 
     },
      {
@@ -52,7 +52,7 @@ export const data=[
         text:"Nova Fit",
         name:"Abstract Purple Shirt",
         price:45,
-        description:'Unique abstract pattern in purple tones. Bold yet classy—ideal for those who love a standout wardrobe piece.'
+        description:'Unique abstract pattern in purple tones.'
 
     },
      {
@@ -61,7 +61,7 @@ export const data=[
         text:"Style Denim",
         name:"Dual Tone Pocket Shirt",
         price:45,
-         description:'Trendy red and blue color-block shirt with a contrasting pocket. A playful design for a modern, youthful look.'
+        description:'Trendy color-block shirt '
 
     },
 
@@ -71,6 +71,7 @@ export const data=[
         text:"Adidas",
         name:"cartoon astronaut shirt",
         price:45,
+        description:'formal shirt '
 
     },
      {
@@ -79,6 +80,7 @@ export const data=[
         text:"Adidas",
         name:"cartoon astronaut shirt",
         price:45,
+        description:'formal shirt '
 
     },
      {
