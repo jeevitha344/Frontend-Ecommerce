@@ -1,5 +1,5 @@
 import React from "react";
-import { FaStar } from "react-icons/fa";
+import { FaShoppingCart, FaStar } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/CartSlice";
 import { Link } from "react-router-dom";
@@ -15,18 +15,14 @@ const Product = ({ productitems }) => {
     toast.success("Product added successfully!", { position: "top-right" });
   };
 
-  // Safe image fallback: backend image OR mock image
-  const productImage =
-    productitems?.product_image?.trim() || productitems?.image || "";
-
   return (
     <Link to={`/productdetails/${productitems.id}`}>
       <div className="bg-white rounded-xl shadow-lg p-4 flex flex-col h-full transform transition-transform duration-300 hover:scale-105">
         {/* Image */}
         <div className="w-full h-48 flex items-center justify-center overflow-hidden rounded-lg">
           <img
-            src={productImage}
-            alt={productitems?.product_name || productitems?.name}
+            src={productitems?.product_image}
+            alt={productitems?.product_name}
             className="w-full h-full object-contain"
           />
         </div>
@@ -34,14 +30,12 @@ const Product = ({ productitems }) => {
         {/* Info */}
         <div className="flex flex-col flex-1 mt-4">
           <h5 className="text-lg font-semibold truncate">
-            {productitems?.product_name || productitems?.name}
+            {productitems?.product_name}
           </h5>
           <p className="text-gray-600 mt-1 line-clamp-2">
-            {productitems?.product_description || productitems?.description}
+            {productitems?.product_description}
           </p>
-          <p className="font-bold mt-2">
-            ${productitems?.product_price || productitems?.price}
-          </p>
+          <p className="font-bold mt-2">${productitems?.product_price}</p>
 
           {/* Rating */}
           <div className="flex items-center mt-2">
@@ -49,6 +43,9 @@ const Product = ({ productitems }) => {
               <FaStar key={i} className="text-yellow-500 mr-1" />
             ))}
           </div>
+
+          {/* Add to Cart button */}
+          
         </div>
       </div>
     </Link>
