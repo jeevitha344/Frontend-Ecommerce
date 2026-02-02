@@ -30,12 +30,15 @@ const dispatch=useDispatch()
     },[id,products]);
 
     if(!product)return <div>loading....</div>
+    const imageUrl = product?.product_image?.startsWith("http")
+  ? product.product_image
+  : `https://res.cloudinary.com/ddthskmqv/${product.product_image}`;
   return (
     <div className='mt-16'>
      <div className='container mx-auto py-8 px-4 md:px-16 lg:px-24' >
 <div className='flex flex-col md:flex-row gap-x-16'>
     <div className='md:w-1/2 py-4 shadow-md md:px-8 h-96 flex justify-center'>
-<img src={product.product_image} alt={product.product_name} className='h-full' />
+<img src={imageUrl} alt={product.product_name} className='h-full' />
     </div>
 
 <div className='md:w-1/2 p-4 shadow-md md:p-16 flex flex-col items-center gap-y-2'> 

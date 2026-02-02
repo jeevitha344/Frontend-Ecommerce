@@ -6,14 +6,13 @@ import { useNavigate } from "react-router-dom";
 const Products = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { productelement, status } = useSelector(
-    state => state.Product
-  );
+  const { productelement, status } = useSelector(state => state.Product);
 
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
-if (status === "loading") {
+
+  if (status === "loading") {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <h2 className="text-xl font-semibold">Loading products...</h2>
@@ -21,7 +20,6 @@ if (status === "loading") {
     );
   }
 
-  // 🛑 EMPTY STATE
   if (productelement.length === 0) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -32,7 +30,6 @@ if (status === "loading") {
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
-      
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold text-[#088178]">Product Management</h1>
@@ -46,46 +43,53 @@ if (status === "loading") {
 
       {/* Product Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {productelement.map(item => (
-          <div
-            key={item.id}
-            className="bg-white rounded-xl shadow-md hover:shadow-xl transition p-4"
-          >
-            <img
-              src={item.product_image} 
-              alt={item.product_name}
-              className="w-full h-48 object-cover rounded-lg"
-            />
+        {productelement.map(item => {
+          // ✅ Calculate imageUrl inside the map block
+          const imageUrl = item?.product_image?.startsWith("http")
+  ? item.product_image
+  : `https://res.cloudinary.com/ddthskmqv/${item.product_image}`;
 
-            <h3 className="mt-3 text-lg font-semibold text-gray-800">
-              {item.product_name}
-            </h3>
+          return (
+            <div
+              key={item.id}
+              className="bg-white rounded-xl shadow-md hover:shadow-xl transition p-4"
+            >
+              <img
+                src={imageUrl}
+                alt={item.product_name}
+                className="w-full h-48 object-cover rounded-lg"
+              />
 
-             <p className="mt-3 text-lg font-semibold text-gray-800">
-              {item.product_description}
-            </p>
+              <h3 className="mt-3 text-lg font-semibold text-gray-800">
+                {item.product_name}
+              </h3>
 
-            <p className="text-green-600 font-bold text-xl">
-              ${item.product_price}
-            </p>
+              <p className="mt-3 text-lg font-semibold text-gray-800">
+                {item.product_description}
+              </p>
 
-            <div className="flex justify-between mt-4">
-              <button
-                onClick={() => navigate(`/edit/${item.id}`)}
-                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded-md text-sm"
-              >
-                Edit
-              </button>
+              <p className="text-green-600 font-bold text-xl">
+                ${item.product_price}
+              </p>
 
-              <button
-                onClick={() => dispatch(deleteProduct(item.id))}
-                className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-md text-sm"
-              >
-                Delete
-              </button>
+              <div className="flex justify-between mt-4">
+                <button
+                  onClick={() => navigate(`/edit/${item.id}`)}
+                  className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded-md text-sm"
+                >
+                  Edit
+                </button>
+
+                <button
+                  onClick={() => dispatch(deleteProduct(item.id))}
+                  className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-md text-sm"
+                >
+                  Delete
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

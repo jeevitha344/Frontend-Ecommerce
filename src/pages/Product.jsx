@@ -15,13 +15,19 @@ const Product = ({ productitems }) => {
     toast.success("Product added successfully!", { position: "top-right" });
   };
 
+  const imageUrl = productitems?.product_image?.startsWith("http")
+    ? productitems.product_image
+    : productitems.product_image
+    ? `https://res.cloudinary.com/ddthskmqv/${productitems.product_image}`
+    : "https://via.placeholder.com/150"; // fallback if no image
+
   return (
     <Link to={`/productdetails/${productitems.id}`}>
-      <div className="bg-white rounded-xl shadow-lg p-4 flex flex-col h-full transform transition-transform duration-300 hover:scale-105">
+      <div className="bg-white rounded-xl shadow-lg p-4 flex flex-col h-full transform transition-transform duration-300 hover:scale-105 relative">
         {/* Image */}
         <div className="w-full h-48 flex items-center justify-center overflow-hidden rounded-lg">
           <img
-            src={productitems?.product_image}
+            src={imageUrl}
             alt={productitems?.product_name}
             className="w-full h-full object-contain"
           />
@@ -44,13 +50,13 @@ const Product = ({ productitems }) => {
             ))}
           </div>
 
-          {/* Add to Cart button */}
-           <button
-        onClick={handleAddToCart}
-        className="absolute bottom-4 right-4 w-10 h-10 bg-[#088178] text-white rounded-full flex items-center justify-center shadow-lg hover:bg-[#065f52] transition-colors"
-      >
-        <FaShoppingCart />
-      </button>
+          {/* Add to Cart button in flow */}
+ <button
+  onClick={handleAddToCart}
+  className="absolute bottom-4 right-4 w-12 h-12 bg-[#088178] text-white rounded-full flex items-center justify-center shadow-lg hover:bg-[#065f52] transition-colors"
+>
+  <FaShoppingCart />
+</button>
         </div>
       </div>
     </Link>
