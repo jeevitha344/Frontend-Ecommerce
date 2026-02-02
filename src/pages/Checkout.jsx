@@ -303,10 +303,16 @@ navigate(`/Order-confrimation/${retryResponse.data.id}`);
  {/* check outpage rightside elements */}
 <h3 className='text-lg font-semibold mb-4'>Order Summary</h3>
 <div className='space-y-4'>
-  {cart.products.map(product =>(
+  {cart.products.map(product =>{
+
+    const imageUrl = product?.product_image?.startsWith("http")
+  ? product.product_image
+  : `https://res.cloudinary.com/ddthskmqv/${product.product_image}`;
+  return(
+
     <div key={product.id} className='flex justify-between'>
       <div className='flex items-center'>
-        <img src = {product?.product_image}  alt={product.product_name} className='w-16 h-16 object-contain rounded' />
+        <img src = {imageUrl}  alt={product.product_name} className='w-16 h-16 object-contain rounded' />
         <div className='ml-4' >
           <h4 className='text-md font-semibold'>{product?.product_name}</h4>
 <p className='text-gray-600'>${product.product_price} x  {product.quantity}</p>         
@@ -318,7 +324,8 @@ navigate(`/Order-confrimation/${retryResponse.data.id}`);
         ${product.product_price * product.quantity}
       </div>
     </div>
-  ))}
+  )
+})}
 </div>
 <div className='mt-4 border-t pt-4'>
   <div className='flex justify-between'>
