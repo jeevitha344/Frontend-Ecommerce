@@ -1,35 +1,48 @@
 import React from 'react'
 import Product from './Product'
-import { useDispatch, useSelector } from 'react-redux'
-// import { setProducts1 } from '../redux/ProductSlice'
-import { useEffect } from 'react'
-import { Categories, data } from '../assets/MockData'
+import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+
 const Collection = () => {
-  //  const dispatch = useDispatch()
 
- const  element = useSelector(state=> state.Product)
+  // get category id from URL (optional)
+  const { id } = useParams()
 
-//  useEffect(()=>{
-//   dispatch(setProducts1(data1))
-//   console.log("element1" + data1)
-//  },[])
+  // get products from redux store
+  const element = useSelector(state => state.Product)
+
+  const products = element?.productelement || []
+
+  // filter ONLY if category id exists
+  const filteredProducts = id
+    ? products.filter(
+        (item) => item.product_category === Number(id)
+      )
+    : products
+
   return (
-    <>
-  
-     <div className='mx-auto py-12 md:px-16 lg:px-4 my-14 pt-[50px]'>
-  <h2 className='text-2xl font-bold mb-6 text-center '>Collections</h2>
-  <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 '>
+    <div className='mx-auto py-12 md:px-16 lg:px-4 my-14 pt-[50px]'>
 
-    {element?.productelement?.map(((productitems)=>(
-      <div key={productitems.id}>
-      {/* // <div>{product.name}</div> */}
-      <Product productitems={productitems}/>
+      <h2 className='text-2xl font-bold mb-6 text-center'>
+        Collections
+      </h2>
+
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4'>
+
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((productitems) => (
+            <div key={productitems.id}>
+              <Product productitems={productitems} />
+            </div>
+          ))
+        ) : (
+          <p className='text-center col-span-full'>
+            products is loading...
+          </p>
+        )}
+
       </div>
-    )))}
-  </div>
-</div>
-      
-      </>
+    </div>
   )
 }
 

@@ -31,6 +31,9 @@ import about from '/Image/about_img.png'
 import contact from '/Image/contact_img.png'
 import searchempty from '/Image/searchempty.jpg'
 import cartempty from '/Image/cartemptyimg.jpg'
+import access from '/Image/accessories.webp'
+import gd from '/Image/gadgets.jpg'
+import as from '/Image/ass.jpg'
 
  export const image={
     logo,
@@ -59,5 +62,5 @@ import cartempty from '/Image/cartemptyimg.jpg'
     n2,
     n3,
     n4,
-    f51,f7,cross,about,contact,searchempty, cartempty
+    f51,f7,cross,about,contact,searchempty, cartempty,access,gd,as
 }

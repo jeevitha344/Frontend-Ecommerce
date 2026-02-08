@@ -15,9 +15,7 @@ const Product = ({ productitems }) => {
     toast.success("Product added successfully!", { position: "top-right" });
   };
 
-  const imageUrl = productitems?.product_image?.startsWith("http")
-    ? productitems.product_image
-    : productitems.product_image
+  const imageUrl = productitems?.product_image?.startsWith("http") ? productitems.product_image : productitems.product_image
     ? `https://res.cloudinary.com/ddthskmqv/${productitems.product_image}`
     : "https://via.placeholder.com/150"; // fallback if no image
 

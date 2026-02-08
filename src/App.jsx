@@ -30,7 +30,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  
   const[order,setOrder]=useState(null)
 
    const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('access'))
@@ -46,6 +46,7 @@ function App() {
         
         <Route path='/' element={<Home/>}/>
         <Route path='/collection' element={<Collection/>}/>
+        <Route path="/collection/:id" element={<Collection />} />
          
       
         <Route path='/about' element={<About/>}/>
